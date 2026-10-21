@@ -1,6 +1,6 @@
 // About, Journal, Enquiry, Credits and 404.
 import config from '../../site.config.mjs';
-import { html, img, pageHead, esc } from '../layout.mjs';
+import { html, img, pageHead, photoHero, esc, arrow } from '../layout.mjs';
 import { posts } from '../data/journal.mjs';
 import { photos } from '../data/photos.mjs';
 import { regions } from '../data/regions.mjs';
@@ -58,15 +58,15 @@ function journal() {
       title: 'Journal',
       description: 'Notes from the road in Türkiye: caravanserais, Cappadocia balloons, Turkish breakfasts and more.',
       body: html`
-${pageHead({ eyebrow: 'Journal', title: 'Notes from Türkiye', lede: 'Short pieces on the history, food and practicalities behind our journeys.' })}
+${pageHead({ eyebrow: 'Journal', title: 'Notes from <em>Türkiye</em>', lede: 'Short pieces on the history, food and practicalities behind our journeys.' })}
 <section class="section">
-  <div class="wrap narrow">
+  <div class="wrap">
     <ul class="posts">
-      ${posts.map((p) => html`<li><article>
-        <p class="small"><time datetime="${p.date}">${fmtDate(p.date)}</time></p>
-        <h2><a href="/journal/${p.slug}/">${p.title}</a></h2>
+      ${posts.map((p) => html`<li class="reveal"><a href="/journal/${p.slug}/">
+        <span class="mono"><time datetime="${p.date}">${fmtDate(p.date)}</time></span>
+        <h2>${p.title}</h2>
         <p>${p.summary}</p>
-      </article></li>`)}
+      </a></li>`)}
     </ul>
   </div>
 </section>`,
@@ -77,8 +77,9 @@ ${pageHead({ eyebrow: 'Journal', title: 'Notes from Türkiye', lede: 'Short piec
       description: p.summary,
       body: html`
 <article>
-${pageHead({ eyebrow: `Journal · <time datetime="${p.date}">${fmtDate(p.date)}</time>`, title: p.title, lede: p.summary })}
-${p.photo ? `<div class="wrap">${img(p.photo, { eager: true, ratio: 16 / 9, className: 'wide' })}</div>` : ''}
+${p.photo
+  ? photoHero({ photo: p.photo, eyebrow: `Journal · <time datetime="${p.date}">${fmtDate(p.date)}</time>`, title: p.title, lede: p.summary, size: 'short' })
+  : pageHead({ eyebrow: `Journal · <time datetime="${p.date}">${fmtDate(p.date)}</time>`, title: p.title, lede: p.summary })}
 <section class="section"><div class="wrap prose">${p.body}<p><a href="/journal/">More from the journal</a></p></div></section>
 </article>`,
     })),
@@ -96,7 +97,7 @@ function enquire() {
     description: 'Tell us about the journey through Türkiye you have in mind, and we’ll suggest a route. No obligation.',
     scripts: ['/enquiry.js'],
     body: html`
-${pageHead({ eyebrow: 'Enquire', title: 'Plan a journey through Türkiye', lede: 'Tell us a little about your trip. We reply within two working days with questions or a first idea for a route. No obligation, no payment details.' })}
+${pageHead({ eyebrow: 'Enquire', title: 'Plan a journey through <em>Türkiye</em>', lede: 'Tell us a little about your trip. We reply within two working days with questions or a first idea for a route. No obligation, no payment details.' })}
 <section class="section">
   <div class="wrap form-grid">
     <form class="enquiry" method="post" action="${esc(action)}"${enctype} data-enquiry data-endpoint="${esc(enquiry.endpoint)}" data-email="${esc(contact.email)}" novalidate>
@@ -138,22 +139,26 @@ ${pageHead({ eyebrow: 'Enquire', title: 'Plan a journey through Türkiye', lede:
       <div class="field"><label for="f-msg">Anything else? <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="6" placeholder="What you love, what you’d rather avoid, mobility or dietary needs, a special occasion…"></textarea></div>
       <div class="field"><label class="check-item"><input type="checkbox" id="f-consent" name="consent" value="yes" required> I’m happy for ${esc(config.brand.name)} to use these details to reply to my enquiry. <span class="req">(required)</span></label></div>
       <div class="form-errors" data-errors role="alert" tabindex="-1" hidden></div>
-      <p><button class="btn" type="submit">Send enquiry</button></p>
+      <p><button class="btn" type="submit"><span>Send enquiry</span><span class="btn-disc">${arrow}</span></button></p>
       <p class="small" data-status role="status"></p>
     </form>
-    <aside class="facts">
-      <h2 class="h4">Prefer to talk?</h2>
-      <ul class="plain">
-        <li><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></li>
-        <li><a href="tel:${esc(contact.phone.replace(/\s/g, ''))}">${esc(contact.phone)}</a></li>
-        <li class="small">${esc(contact.hours)}</li>
-      </ul>
-      <h2 class="h4">What happens next</h2>
-      <ol>
-        <li>We read your enquiry and reply, usually within two working days.</li>
-        <li>A short call or a few emails to understand what you want.</li>
-        <li>A first route with suggested stays, and a quote.</li>
-      </ol>
+    <aside class="aside-box">
+      <div>
+        <h2 class="mono-label">Prefer to talk?</h2>
+        <ul class="plain">
+          <li><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></li>
+          <li><a href="tel:${esc(contact.phone.replace(/\s/g, ''))}">${esc(contact.phone)}</a></li>
+          <li class="small">${esc(contact.hours)}</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="mono-label">What happens next</h2>
+        <ol>
+          <li>We read your enquiry and reply, usually within two working days.</li>
+          <li>A short call or a few emails to understand what you want.</li>
+          <li>A first route with suggested stays, and a quote.</li>
+        </ol>
+      </div>
     </aside>
   </div>
 </section>`,
@@ -195,7 +200,7 @@ function sourcesPage() {
     title: 'Sources',
     description: 'The references behind the dates, distances, opening details and holiday dates on this site.',
     body: html`
-${pageHead({ eyebrow: 'Sources', title: 'Where our facts come from', lede: `The references we checked the site’s facts against, last on ${fmtDate(CHECKED)}. Many are secondary sources, so where an official source exists we name it: check it before you travel.` })}
+${pageHead({ eyebrow: 'Sources', title: 'Where our facts <em>come from</em>', lede: `The references we checked the site’s facts against, last on ${fmtDate(CHECKED)}. Many are secondary sources, so where an official source exists we name it: check it before you travel.` })}
 <section class="section">
   <div class="wrap prose">
     <dl class="sources">
@@ -221,7 +226,7 @@ function notFound() {
     title: 'Page not found',
     description: 'This page could not be found.',
     body: html`
-${pageHead({ eyebrow: '404', title: 'This road doesn’t go anywhere', lede: 'The page you were looking for has moved or never existed.' })}
+${pageHead({ eyebrow: '404', title: 'This road doesn’t go <em>anywhere</em>', lede: 'The page you were looking for has moved or never existed.' })}
 <section class="section"><div class="wrap prose"><p>Try the <a href="/">home page</a>, the <a href="/regions/">regions of Türkiye</a> or the <a href="/caravan-route/">caravan-route map</a>.</p></div></section>`,
   };
 }

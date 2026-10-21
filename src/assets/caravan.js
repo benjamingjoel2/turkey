@@ -13,17 +13,17 @@
       if (!s) return;
       pins.forEach((p) => p.setAttribute('aria-current', String(p.dataset.stop === id)));
       panel.innerHTML = `
-        <p class="eyebrow">Stop ${s.n} of ${stops.length}</p>
+        <p class="mono">${String(s.n).padStart(2, '0')} / ${String(stops.length).padStart(2, '0')} · ${esc(s.coords)}</p>
         <h3>${esc(s.name)}</h3>
-        <p class="map-han">${esc(s.han)} · ${esc(s.date)}</p>
+        <p class="map-han">${esc(s.han)}, ${esc(s.date)}</p>
         <p>${esc(s.story)}</p>
         ${s.region ? `<p><a href="${s.region}">Travel in this region</a></p>` : ''}
-        <p class="small">
-          ${s.n > 1 ? `<button type="button" class="btn btn-small btn-ghost-dark" data-go="${stops[s.n - 2].id}">← Previous</button>` : ''}
-          ${s.n < stops.length ? `<button type="button" class="btn btn-small btn-ghost-dark" data-go="${stops[s.n].id}">Next →</button>` : ''}
+        <p class="map-nav">
+          ${s.n > 1 ? `<button type="button" data-go="${stops[s.n - 2].id}">← Previous</button>` : ''}
+          ${s.n < stops.length ? `<button type="button" data-go="${stops[s.n].id}">Next →</button>` : ''}
         </p>`;
       document.querySelectorAll('.stops li').forEach((li) => li.classList.toggle('is-active', li.id === `stop-${id}`));
-      if (scroll && window.matchMedia('(max-width: 59.99em)').matches) panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      if (scroll && window.matchMedia('(max-width: 61.99em)').matches) panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     };
 
     pins.forEach((pin) => pin.addEventListener('click', (e) => {

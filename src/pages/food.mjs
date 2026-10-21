@@ -1,4 +1,4 @@
-import { html, img, pageHead } from '../layout.mjs';
+import { html, img, pageHead, photoHero } from '../layout.mjs';
 
 const REGIONS = [
   ['İstanbul', '/regions/istanbul/', 'A meyhane evening of cold meze, grilled fish and rakı; balık ekmek (fish in bread) by the Galata Bridge; midye dolma (stuffed mussels) from street carts; the produce and pickle shops of Kadıköy market.'],
@@ -15,14 +15,12 @@ export default function food() {
     title: 'Food in Türkiye',
     description: 'A regional guide to eating in Türkiye: meze in İstanbul, olive-oil cooking on the Aegean, mantı in Kayseri, Black Sea anchovies, the kebabs and baklava of the southeast, and the Van breakfast.',
     body: html`
-${pageHead({ eyebrow: 'Food', title: 'Eating your way across Türkiye',
-  lede: 'Turkish food is not one cuisine but dozens. Every region has its own breads, cheeses and ways with a lamb or an aubergine. We plan journeys around lunch.' })}
-<div class="wrap">${img('spiceStall', { eager: true, ratio: 16 / 9, className: 'wide' })}</div>
+${photoHero({ photo: 'spiceStall', eyebrow: 'Food', title: 'Eating your way across <em>Türkiye</em>', lede: 'Turkish food is not one cuisine but dozens. Every region has its own breads, cheeses and ways with a lamb or an aubergine. We plan journeys around lunch.', size: 'short' })}
 <section class="section">
   <div class="wrap">
-    <h2>Region by region</h2>
+    <div class="section-head"><h2>Region by <em>region</em></h2><p class="lede">Six kitchens, six reasons to stay for lunch.</p></div>
     <ul class="food-grid">
-      ${REGIONS.map(([name, href, text]) => html`<li><h3><a href="${href}">${name}</a></h3><p>${text}</p></li>`)}
+      ${REGIONS.map(([name, href, text], i) => html`<li class="reveal"><span class="mono">${String(i + 1).padStart(2, '0')}</span><h3><a href="${href}">${name}</a></h3><p>${text}</p></li>`)}
     </ul>
   </div>
 </section>

@@ -13,7 +13,7 @@ function journeysPage() {
     title: 'Sample journeys in Türkiye',
     description: 'Sample itineraries across Türkiye: İstanbul and Cappadocia, the Aegean ruins and Pamukkale, the Lycian Way, Upper Mesopotamia and the far east to Lake Van.',
     body: html`
-${pageHead({ eyebrow: 'Journeys', title: 'Sample journeys through Türkiye',
+${pageHead({ eyebrow: 'Journeys', title: 'Sample journeys through <em>Türkiye</em>',
   lede: 'Starting points, not fixed packages. Every journey is planned around you: your dates, your pace, the things you love. Prices depend on season and stays, so we quote each one individually.' })}
 <section class="section">
   <div class="wrap journeys">
@@ -40,7 +40,7 @@ ${pageHead({ eyebrow: 'Journeys', title: 'Sample journeys through Türkiye',
 function whenPage() {
   return {
     path: '/when-to-go/',
-    title: 'When to go to Türkiye',
+    title: 'When to go to <em>Türkiye</em>',
     description: 'The best months to visit each region of Türkiye, plus notes on summer heat, winter, public holidays and Ramadan.',
     body: html`
 ${pageHead({ eyebrow: 'Planning', title: 'When to go to Türkiye',
@@ -89,7 +89,7 @@ function staysPage() {
     title: 'Stays in Türkiye',
     description: 'The kinds of places we like to stay in Türkiye: cave rooms in Cappadocia, village pensions on the Lycian Way, restored stone houses in Mardin.',
     body: html`
-${pageHead({ eyebrow: 'Stays', title: 'Where we like to stay in Türkiye',
+${pageHead({ eyebrow: 'Stays', title: 'Where we like to <em>stay</em>',
   lede: 'Small, characterful and run by people who know their place: cave rooms, village pensions, restored Ottoman and stone houses. We choose stays for location and hospitality, not stars.' })}
 <section class="section">
   <div class="wrap">

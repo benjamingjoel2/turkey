@@ -41,7 +41,13 @@ const tile = (p) => {
 
 const favicon = (config) => {
   const p = config.palette;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${p.iznik}"/><path d="M32 7l5 8 9-3-3 9 8 5-8 5 3 9-9-3-5 8-5-8-9 3 3-9-8-5 8-5-3-9 9 3z" fill="none" stroke="${p.turquoiseLight}" stroke-width="2"/><text x="32" y="41" font-family="Georgia,serif" font-size="24" font-weight="700" text-anchor="middle" fill="${p.white}">${config.brand.monogram}</text></svg>`;
+  const pts = [];
+  for (let i = 0; i < 16; i++) {
+    const a = (Math.PI / 8) * i - Math.PI / 2;
+    const r = i % 2 ? 19.9 : 26;
+    pts.push(`${(32 + r * Math.cos(a)).toFixed(1)},${(32 + r * Math.sin(a)).toFixed(1)}`);
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${p.iznikDeep}"/><polygon points="${pts.join(' ')}" fill="none" stroke="${p.saffron}" stroke-width="3" stroke-linejoin="round"/><circle cx="32" cy="32" r="7" fill="${p.saffron}"/></svg>`;
 };
 
 async function build() {
@@ -79,7 +85,7 @@ async function build() {
   // 3. Assets: CSS theme + static files
   const p = config.palette;
   const vars = Object.entries(p).map(([k, v]) => `  --c-${kebab(k)}: ${v};`).join('\n');
-  const theme = `:root {\n${vars}\n  --font-display: ${config.fonts.display};\n  --font-body: ${config.fonts.body};\n  --tile: ${tile(p)};\n}\n`;
+  const theme = `:root {\n${vars}\n  --font-display: ${config.fonts.display};\n  --font-body: ${config.fonts.body};\n  --font-mono: ${config.fonts.mono};\n  --tile: ${tile(p)};\n}\n`;
   const css = await readFile(join(ROOT, 'src/assets/styles.css'), 'utf8');
   await writeFile(join(DIST, 'styles.css'), theme + css);
   await writeFile(join(DIST, 'favicon.svg'), favicon(config));

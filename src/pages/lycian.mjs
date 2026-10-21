@@ -1,4 +1,4 @@
-import { html, img, pageHead } from '../layout.mjs';
+import { html, img, pageHead, photoHero } from '../layout.mjs';
 import { stages, DIFFICULTY } from '../data/lycian.mjs';
 
 export default function lycian() {
@@ -8,18 +8,16 @@ export default function lycian() {
     description: 'Plan a walk on the Lycian Way in Türkiye: choose stages and see total distance, difficulty and where to sleep each night.',
     scripts: ['/lycian.js'],
     body: html`
-${pageHead({ eyebrow: 'Signature feature · Lycian coast', title: 'Plan your Lycian Way',
-  lede: 'The Lycian Way follows the coast of ancient Lycia from Ovacık, above Ölüdeniz near Fethiye, towards Antalya. It opened at a little over 500 km and with later extensions now runs to about 760 km. Few people walk it all. Choose the stages you want, and see the distance, the hardest day and where you’ll sleep.' })}
-<div class="wrap">${img('oludeniz', { eager: true, ratio: 21 / 9, className: 'wide' })}</div>
+${photoHero({ photo: 'oludeniz', eyebrow: 'Signature feature · Lycian coast', title: 'Plan your <em>Lycian Way</em>', lede: 'The Lycian Way follows the coast of ancient Lycia from Ovacık, above Ölüdeniz near Fethiye, towards Antalya. It opened at a little over 500 km and with later extensions now runs to about 760 km. Few people walk it all. Choose the stages you want, and see the distance, the hardest day and where you’ll sleep.', size: 'short' })}
 <section class="section">
   <div class="wrap planner" data-lycian>
     <form class="planner-stages" aria-labelledby="stages-h">
       <h2 id="stages-h">Stages, west to east</h2>
       <p class="small">Distances and times are approximate and change with re-routing. Times are walking only: add stops. Shortcuts by taxi or boat are possible on many stages.</p>
       <p class="planner-quick">
-        <button type="button" class="btn btn-small btn-ghost-dark" data-preset="1-6">First week: Ovacık to Gavurağılı</button>
-        <button type="button" class="btn btn-small btn-ghost-dark" data-preset="10-13">Kaş to Demre</button>
-        <button type="button" class="btn btn-small btn-ghost-dark" data-preset="">Clear</button>
+        <button type="button" class="chip" data-preset="1-6">First week: Ovacık to Gavurağılı</button>
+        <button type="button" class="chip" data-preset="10-13">Kaş to Demre</button>
+        <button type="button" class="chip" data-preset="">Clear</button>
       </p>
       <ol class="stage-list">
         ${stages.map((s) => html`<li class="stage">

@@ -52,36 +52,39 @@ export default {
 
   // Palette. Names describe where each colour comes from.
   palette: {
-    iznik: '#1B4A82',       // İznik tile cobalt: headings, links, header band
-    iznikDeep: '#0F2F57',   // darker tile blue: footer, hero overlay
-    turquoise: '#1F7A72',   // turquoise glaze, darkened for text contrast
-    turquoiseLight: '#7FC8BE', // turquoise for decoration on dark grounds
-    stone: '#EDE3D3',       // Cappadocia tuff: alternate section background
-    stoneDeep: '#D9C8AE',   // darker tuff: borders, rules
-    rose: '#954840',        // Rose Valley at dusk, darkened for text use
-    roseLight: '#E4B8A8',   // pale rose for decoration
-    saffron: '#E2A529',     // saffron: highlights, focus rings (on dark text)
-    pomegranate: '#8C1D2F', // pomegranate: primary buttons, key accents
-    ink: '#221D19',         // body text
-    inkSoft: '#4E453D',     // secondary text
-    paper: '#FBF7F0',       // page background
+    iznik: '#1D4778',       // İznik tile cobalt: links, headings on light grounds
+    iznikDeep: '#0D1C2C',   // night over the plateau: dark sections, footer
+    turquoise: '#1C716A',   // turquoise glaze, darkened for text contrast
+    turquoiseLight: '#93D2C8', // turquoise glaze for accents on dark grounds
+    stone: '#ECE4D6',       // Cappadocia tuff: alternate section background
+    stoneDeep: '#D3C4AC',   // darker tuff: hairlines and borders
+    rose: '#924640',        // Rose Valley at dusk, darkened for text use
+    roseLight: '#E6BCAE',   // pale rose for accents on dark grounds
+    saffron: '#DDA43C',     // saffron: small highlights, map pins, focus rings
+    pomegranate: '#8A1C2E', // pomegranate: primary buttons
+    ink: '#1C1A17',         // body text
+    inkSoft: '#57504A',     // secondary text
+    paper: '#F6F1E9',       // page background
     white: '#FFFFFF',
   },
 
   // Text/background pairs that the site actually uses. The build verifies each
   // reaches 4.5:1 (WCAG AA for normal text). Add a pair here if you use a new one.
   contrastPairs: [
-    ['ink', 'paper'], ['inkSoft', 'paper'], ['ink', 'stone'], ['inkSoft', 'stone'],
-    ['iznik', 'paper'], ['iznik', 'stone'], ['turquoise', 'paper'], ['rose', 'paper'],
-    ['pomegranate', 'paper'], ['white', 'pomegranate'], ['white', 'iznik'],
-    ['white', 'iznikDeep'], ['stone', 'iznikDeep'], ['turquoiseLight', 'iznikDeep'],
-    ['saffron', 'iznikDeep'], ['ink', 'saffron'], ['white', 'turquoise'], ['ink', 'white'],
-    ['rose', 'stone'], ['rose', 'white'], ['iznik', 'white'], ['inkSoft', 'white'], ['pomegranate', 'stone'],
+    ['ink', 'paper'], ['inkSoft', 'paper'], ['ink', 'stone'], ['inkSoft', 'stone'], ['ink', 'white'],
+    ['iznik', 'paper'], ['iznik', 'stone'], ['iznik', 'white'], ['turquoise', 'paper'], ['rose', 'paper'],
+    ['rose', 'stone'], ['pomegranate', 'paper'], ['white', 'pomegranate'], ['white', 'iznik'],
+    ['white', 'iznikDeep'], ['paper', 'iznikDeep'], ['stone', 'iznikDeep'], ['turquoiseLight', 'iznikDeep'],
+    ['saffron', 'iznikDeep'], ['roseLight', 'iznikDeep'], ['ink', 'saffron'], ['white', 'turquoise'],
+    ['inkSoft', 'white'],
   ],
 
   fonts: {
-    // System font stacks: no web-font download, so pages render instantly.
-    display: '"Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif',
-    body: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    // Google Fonts (all three include the Turkish characters ı İ ş ğ ç ö ü).
+    // To go font-free, set `googleHref` to '' and use system stacks below.
+    googleHref: 'https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Instrument+Sans:wght@400..600&family=Geist+Mono:wght@400;500&display=swap',
+    display: '"Newsreader", "Iowan Old Style", Georgia, serif',
+    body: '"Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
+    mono: '"Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace',
   },
 };

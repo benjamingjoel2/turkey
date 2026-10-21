@@ -83,6 +83,17 @@ FACTS-TO-VERIFY.md     Everything that needs checking before launch
 
 ## Common edits
 
+**Design system.** The look follows editorial travel sites: full-bleed photo
+heroes, Newsreader (serif, with italic accents) for headings, Instrument Sans
+for text and Geist Mono for small details such as coordinates and indexes,
+hairline dividers, and pill buttons with an arrow. The brand mark is an
+eight-pointed Seljuk star, drawn in `star()` in `src/layout.mjs`. Fonts come from
+Google Fonts via `fonts.googleHref` in the config. Set it to `''` to use system
+fonts only. Useful building blocks in `src/layout.mjs`: `photoHero()`,
+`pageHead()`, `marker()` (the "(01) Label" section markers), `button()`,
+`img()` and `coords()`. Add `class="reveal"` to any block to fade it in on
+scroll.
+
 **Rebrand.** Edit `brand`, `contact` and `palette` in `site.config.mjs`. A
 ready-to-paste *Meander Türkiye* alternative is in the comments there. The
 favicon, tile pattern and every colour are generated from the palette. If a new

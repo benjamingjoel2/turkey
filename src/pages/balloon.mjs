@@ -1,4 +1,4 @@
-import { html, img, pageHead } from '../layout.mjs';
+import { html, img, pageHead, photoHero } from '../layout.mjs';
 
 export default function balloon() {
   return [{
@@ -8,9 +8,7 @@ export default function balloon() {
     scripts: ['/balloon.js'],
     body: html`
 <article>
-${pageHead({ eyebrow: 'Before you go · Cappadocia', title: 'The Cappadocia balloon guide',
-  lede: 'A sunrise flight over the valleys is unforgettable, but it is not guaranteed. Balloons only fly when the wind allows, and in some weeks that means several cancelled mornings in a row. Plan for it and you’ll almost certainly get your flight.' })}
-<div class="wrap">${img('balloons', { eager: true, ratio: 16 / 9, className: 'wide' })}</div>
+${photoHero({ photo: 'balloons', eyebrow: 'Before you go · Cappadocia', title: 'The Cappadocia <em>balloon</em> guide', lede: 'A sunrise flight over the valleys is unforgettable, but it is not guaranteed. Balloons only fly when the wind allows, and in some weeks that means several cancelled mornings in a row. Plan for it and you’ll almost certainly get your flight.', size: 'short' })}
 
 <section class="section">
   <div class="wrap prose">

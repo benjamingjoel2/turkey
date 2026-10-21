@@ -1,10 +1,12 @@
 // The eight regions. Each becomes a page at /regions/<slug>/.
 // `photos`: keys from photos.mjs. Leave empty to show a tile panel instead.
+// lat/lon: a representative point, shown as coordinates in the page design.
 // Facts marked in FACTS-TO-VERIFY.md should be re-checked before each season.
 
 export const regions = [
   {
     slug: 'istanbul',
+    lat: 41.008, lon: 28.98,
     name: 'İstanbul',
     kicker: 'Where the caravans ended',
     photos: ['hagiaSophia', 'suleymaniye'],
@@ -27,6 +29,7 @@ export const regions = [
   },
   {
     slug: 'cappadocia',
+    lat: 38.643, lon: 34.828,
     name: 'Cappadocia',
     kicker: 'Stone, rose and sunrise',
     photos: ['balloons'],
@@ -49,6 +52,7 @@ export const regions = [
   },
   {
     slug: 'aegean',
+    lat: 37.939, lon: 27.341,
     name: 'The Aegean: Ephesus and Pergamon',
     kicker: 'Marble cities',
     photos: ['ephesus', 'pergamon'],
@@ -71,6 +75,7 @@ export const regions = [
   },
   {
     slug: 'pamukkale',
+    lat: 37.921, lon: 29.12,
     name: 'Pamukkale and Hierapolis',
     kicker: 'The cotton castle',
     photos: ['pamukkale'],
@@ -93,6 +98,7 @@ export const regions = [
   },
   {
     slug: 'lycian-coast',
+    lat: 36.2, lon: 29.64,
     name: 'The Lycian coast',
     kicker: 'Tombs above the sea',
     photos: ['kas', 'oludeniz'],
@@ -115,6 +121,7 @@ export const regions = [
   },
   {
     slug: 'black-sea',
+    lat: 41.005, lon: 39.726,
     name: 'The Black Sea',
     kicker: 'Tea, mist and monasteries',
     photos: ['sumela'],
@@ -137,6 +144,7 @@ export const regions = [
   },
   {
     slug: 'southeast',
+    lat: 37.313, lon: 40.735,
     name: 'The southeast: Göbekli Tepe and Mardin',
     kicker: 'Upper Mesopotamia',
     photos: ['gobekliTepe', 'mardin'],
@@ -159,6 +167,7 @@ export const regions = [
   },
   {
     slug: 'lake-van',
+    lat: 38.63, lon: 42.9,
     name: 'Lake Van',
     kicker: 'A soda sea in the mountains',
     photos: [],

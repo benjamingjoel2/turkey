@@ -1,4 +1,4 @@
-import { html, img, pageHead } from '../layout.mjs';
+import { html, img, pageHead, photoHero } from '../layout.mjs';
 
 export default function etiquette() {
   return [{
@@ -7,9 +7,7 @@ export default function etiquette() {
     description: 'Short, respectful notes on visiting mosques in Türkiye and on travelling during Ramadan: dress, prayer times, photography, eating in public and holidays.',
     body: html`
 <article>
-${pageHead({ eyebrow: 'Before you go', title: 'Mosques and Ramadan in Türkiye',
-  lede: 'Mosques in Türkiye are working places of prayer, and most welcome visitors. A little preparation shows respect and makes the visit easier for everyone.' })}
-<div class="wrap">${img('suleymaniye', { eager: true, ratio: 16 / 9, className: 'wide' })}</div>
+${photoHero({ photo: 'suleymaniye', eyebrow: 'Before you go', title: 'Mosques and Ramadan in <em>Türkiye</em>', lede: 'Mosques in Türkiye are working places of prayer, and most welcome visitors. A little preparation shows respect and makes the visit easier for everyone.', size: 'short' })}
 <section class="section">
   <div class="wrap two-col">
     <div class="prose">
