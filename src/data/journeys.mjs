@@ -67,7 +67,7 @@ export const journeys = [
     regions: ['black-sea', 'lake-van'],
     for: 'Return visitors who want the Türkiye few people see.',
     days_: [
-      ['1–3', 'Trabzon', 'Hagia Sophia, the bazaar, Sumela (if open).'],
+      ['1–3', 'Trabzon', 'Hagia Sophia, the bazaar, Sumela Monastery.'],
       ['4–6', 'Rize and Ayder', 'Tea gardens, then up to the summer pastures for walking.'],
       ['7–8', 'Erzurum', 'Seljuk madrasas and the Rüstem Paşa caravanserai.'],
       ['9', 'Doğubayazıt', 'İshak Paşa Palace under Mount Ağrı (Ararat).'],

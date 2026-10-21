@@ -1,6 +1,7 @@
 // Shared layout and small HTML helpers used by every page.
 import config from '../site.config.mjs';
 import { photos } from './data/photos.mjs';
+import { sources } from './data/sources.mjs';
 
 export const esc = (s = '') =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -89,6 +90,7 @@ export function layout({ path, title, description, body, scripts = [], bodyClass
 </header>
 <main id="main">
 ${body}
+${pageSources(path)}
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
@@ -120,7 +122,7 @@ ${body}
     </div>
   </div>
   <div class="wrap footer-base small">
-    <p>Visa rules, opening hours, ticket prices and seasons change. We check them, but please confirm with official sources before you travel. Photos: <a href="/credits/">credits</a>.</p>
+    <p>Visa rules, opening hours, ticket prices and seasons change. We check them, but please confirm with official sources before you travel. <a href="/sources/">Sources</a> · Photos: <a href="/credits/">credits</a>.</p>
     <p>© ${new Date().getFullYear()} ${esc(brand.name)}</p>
   </div>
 </footer>
@@ -129,6 +131,17 @@ ${scripts.map((s) => `<script src="${s}" defer></script>`)}
 </body>
 </html>
 `;
+}
+
+// References for facts on this page (from src/data/sources.mjs).
+function pageSources(path) {
+  const list = sources.filter((s) => s.where.includes(path));
+  if (!list.length) return '';
+  return html`<aside class="page-sources wrap" aria-labelledby="page-sources-h">
+  <h2 id="page-sources-h" class="h4">Sources for this page</h2>
+  <ul>${list.map((s) => html`<li><strong>${esc(s.topic)}:</strong> ${s.refs.map(([t, u]) => `<a href="${esc(u)}">${esc(t)}</a>`).join('; ')}</li>`)}</ul>
+  <p class="small">Checked October 2026. Details change: see <a href="/sources/">all sources</a>.</p>
+</aside>`;
 }
 
 // Page intro block used at the top of most pages.

@@ -9,7 +9,7 @@ export default function lycian() {
     scripts: ['/lycian.js'],
     body: html`
 ${pageHead({ eyebrow: 'Signature feature · Lycian coast', title: 'Plan your Lycian Way',
-  lede: 'The Lycian Way runs for more than 500 km along the coast of ancient Lycia, from Ölüdeniz near Fethiye to near Antalya. Few people walk it all. Choose the stages you want, and see the distance, the hardest day and where you’ll sleep.' })}
+  lede: 'The Lycian Way follows the coast of ancient Lycia from Ovacık, above Ölüdeniz near Fethiye, towards Antalya. It opened at a little over 500 km and with later extensions now runs to about 760 km. Few people walk it all. Choose the stages you want, and see the distance, the hardest day and where you’ll sleep.' })}
 <div class="wrap">${img('oludeniz', { eager: true, ratio: 21 / 9, className: 'wide' })}</div>
 <section class="section">
   <div class="wrap planner" data-lycian>

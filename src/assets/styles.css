@@ -345,3 +345,13 @@ input[aria-invalid="true"] { border-color: var(--c-pomegranate); border-width: 2
 .footer-h { font: 600 0.8rem var(--font-body); text-transform: uppercase; letter-spacing: 0.12em; color: var(--c-saffron); }
 .footer-base { border-top: 1px solid rgb(255 255 255 / 0.18); padding-top: 1rem; padding-bottom: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; }
 .footer-base p { margin: 0; max-width: 46rem; }
+
+/* Sources */
+.page-sources { border-top: 1px solid var(--c-stone-deep); padding-top: 1.5rem; padding-bottom: 2rem; font-size: 0.92rem; }
+.page-sources ul { padding-left: 1.2rem; }
+.page-sources li { margin-bottom: 0.3rem; }
+.sources > div { border-left: 4px solid var(--c-turquoise); padding-left: 1rem; margin-bottom: 1.5rem; }
+.sources dt { font: 700 1.15rem var(--font-display); color: var(--c-iznik); }
+.sources dd { margin: 0.3rem 0 0; }
+.sources ul { padding-left: 1.2rem; margin-bottom: 0.4rem; }
+.sources a, .page-sources a { overflow-wrap: anywhere; }

@@ -60,6 +60,7 @@ src/data/              Content as data: edit these for most text changes
   seasons.mjs          When-to-go grid
   journal.mjs          Journal posts
   photos.mjs           Every photo, with credit and location check
+  sources.mjs          References behind the facts (shown on /sources/ and per page)
   map-outline.mjs      Generated map outline (Natural Earth, public domain)
 src/pages/             One module per page or group of pages
 src/assets/            styles.css and the small JS files for each tool
@@ -133,6 +134,16 @@ a labelled tile panel instead of a photo from somewhere else. To add one:
    `urls.raw` value from the Unsplash API. Fill in `w`, `h`, `name`,
    `username`, `place`, a descriptive `alt`, and `verified`.
 3. Put the key in `photos: []` for `lake-van` in `src/data/regions.mjs`.
+
+## Sources
+
+Facts are backed by references in `src/data/sources.mjs`. Each entry names the
+pages it supports (`where`), and those pages automatically get a short
+"Sources for this page" list; `/sources/` shows them all. When you check or
+change a fact, update its entry and `CHECKED`, and tick it in
+`FACTS-TO-VERIFY.md`. Where an official source exists (muze.gov.tr,
+diyanet.gov.tr, shgm.gov.tr), prefer it over secondary ones. Avoid link text
+containing "Turkey"; the build counts visible mentions.
 
 ## Before launch
 

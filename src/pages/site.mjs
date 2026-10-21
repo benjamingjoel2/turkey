@@ -5,6 +5,7 @@ import { posts } from '../data/journal.mjs';
 import { photos } from '../data/photos.mjs';
 import { regions } from '../data/regions.mjs';
 import { journeys } from '../data/journeys.mjs';
+import { sources, CHECKED } from '../data/sources.mjs';
 
 const fmtDate = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString(config.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 
@@ -188,6 +189,32 @@ ${pageHead({ eyebrow: 'Credits', title: 'Photo credits', lede: 'All photos are f
   };
 }
 
+function sourcesPage() {
+  return {
+    path: '/sources/',
+    title: 'Sources',
+    description: 'The references behind the dates, distances, opening details and holiday dates on this site.',
+    body: html`
+${pageHead({ eyebrow: 'Sources', title: 'Where our facts come from', lede: `The references we checked the site’s facts against, last on ${fmtDate(CHECKED)}. Many are secondary sources, so where an official source exists we name it: check it before you travel.` })}
+<section class="section">
+  <div class="wrap prose">
+    <dl class="sources">
+      ${sources.map((s) => html`<div>
+        <dt>${esc(s.topic)}</dt>
+        <dd>
+          <p>${esc(s.fact)}</p>
+          <ul>${s.refs.map(([t, u]) => `<li><a href="${esc(u)}">${esc(t)}</a></li>`)}</ul>
+          ${s.official ? `<p class="small">Official source to check: ${esc(s.official)}</p>` : ''}
+          <p class="small">Used on: ${s.where.map((w) => `<a href="${w}">${w}</a>`).join(', ')}</p>
+        </dd>
+      </div>`)}
+    </dl>
+    <p>Spotted something out of date? <a href="/enquire/">Tell us</a>.</p>
+  </div>
+</section>`,
+  };
+}
+
 function notFound() {
   return {
     path: '/404.html',
@@ -200,5 +227,5 @@ ${pageHead({ eyebrow: '404', title: 'This road doesn’t go anywhere', lede: 'Th
 }
 
 export default function site() {
-  return [about(), ...journal(), enquire(), credits(), notFound()];
+  return [about(), ...journal(), enquire(), credits(), sourcesPage(), notFound()];
 }

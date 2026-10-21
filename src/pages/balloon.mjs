@@ -29,7 +29,7 @@ ${pageHead({ eyebrow: 'Before you go · Cappadocia', title: 'The Cappadocia ball
     <p>Balloons can fly in every month, but the odds change with the seasons. Spring and autumn generally have the most settled mornings. Winter brings more wind, snow and cloud, and more cancellations, though the snowy flights that do go are spectacular.</p>
 
     <h2 id="why">Why flights are cancelled</h2>
-    <p>Every morning the Turkish civil aviation authority (SHGM) checks the weather and decides whether balloons may fly. Individual operators cannot overrule it, and no reputable operator would want to.</p>
+    <p>Every morning the Turkish civil aviation authority (SHGM), which has an office in Göreme, checks the weather and makes one decision for the whole region, shown as a coloured flag: green means balloons may fly, red means they are grounded. Individual operators cannot overrule a red flag, and even on a green day the pilot may still decide not to go.</p>
     <ul>
       <li><strong>Wind.</strong> The main reason. A balloon goes where the wind takes it, and a strong or gusty wind makes landing dangerous. Calm air on the ground is not enough: the wind higher up matters too.</li>
       <li><strong>Rain, snow and fog.</strong> Wet envelopes and poor visibility also stop flights.</li>

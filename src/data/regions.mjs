@@ -15,9 +15,9 @@ export const regions = [
       'Most visitors stay within the old peninsula of Sultanahmet. We suggest spending at least as much time across the water: in Kadıköy’s food market on the Asian shore, on the ferries that cost less than a coffee, and in the steep lanes of Balat and Fener on the Golden Horn.',
     ],
     highlights: [
-      ['Hagia Sophia', 'Sixth-century church, Ottoman mosque, later a museum and, since 2020, a mosque again. Visitors are welcome outside prayer times; read our <a href="/etiquette/">mosque notes</a> first.'],
+      ['Hagia Sophia', 'Sixth-century church, Ottoman mosque, later a museum and, since 2020, a mosque again. Since 2024 foreign visitors see it from a ticketed route through the upper galleries; worshippers use a separate, free entrance. Read our <a href="/etiquette/">mosque notes</a> first.'],
       ['The Süleymaniye', 'Sinan’s great mosque complex above the Golden Horn. Quieter than the Blue Mosque, with a garden terrace looking over the water.'],
-      ['The hans of the bazaar quarter', 'Büyük Valide Han and its neighbours: climb (with permission) to the rooftops for the old city from above.'],
+      ['The hans of the bazaar quarter', 'Büyük Valide Han and its neighbours, still full of workshops. Please stay off the roofs: access was banned in 2016 to protect the domes.'],
       ['Ferries', 'The Bosphorus by public ferry, not a tour boat: Eminönü to Kadıköy, or the long run up to Anadolu Kavağı.'],
       ['Balat and Fener', 'Old Greek, Jewish and Armenian neighbourhoods with churches, synagogues and coffee houses.'],
     ],
@@ -125,7 +125,7 @@ export const regions = [
       'Inland, families still move their animals up to the yaylas, high summer pastures with wooden houses, in the warm months. Ayder and the Kaçkar mountains are the place to walk.',
     ],
     highlights: [
-      ['Sumela Monastery', 'A Greek Orthodox monastery built into a cliff above the Altındere valley. Check opening before you go: it has been closed for restoration in recent years.'],
+      ['Sumela Monastery', 'A Greek Orthodox monastery built into a cliff above the Altındere valley, reopened in 2021 after a long restoration. Check opening hours before you go.'],
       ['Trabzon', 'Hagia Sophia of Trabzon, a thirteenth-century church with fine frescoes, and a lively old bazaar.'],
       ['Rize tea gardens', 'Terraces of tea down to the sea, and tea houses to drink it in.'],
       ['Ayder and the Kaçkars', 'Summer pastures, wooden villages and high walking routes.'],
@@ -143,7 +143,7 @@ export const regions = [
     summary:
       'The oldest monumental site yet found, honey-stone towns over the Mesopotamian plain, and some of Türkiye’s best cooking.',
     intro: [
-      'Göbekli Tepe, near Şanlıurfa, rewrote the story of early civilisation: circles of carved stone pillars put up around 11,000 years ago, before farming, pottery or writing. A roof now protects the main enclosures, and the Şanlıurfa Archaeology Museum holds the finds.',
+      'Göbekli Tepe, near Şanlıurfa, rewrote the story of early civilisation: circles of carved stone pillars put up by hunter-gatherers more than 11,000 years ago, before pottery or writing. It has been a UNESCO World Heritage Site since 2018, protective roofs now cover the main enclosures, and the Şanlıurfa museum complex shows finds and a reconstruction of one enclosure.',
       'Mardin climbs a hillside above the plain that runs south into Syria. Its stone houses, madrasas and Syriac churches are a reminder that this has long been a place of many faiths and languages. Nearby Midyat and the Tur Abdin plateau have working Syriac Orthodox monasteries, including Mor Gabriel.',
     ],
     highlights: [
@@ -151,7 +151,7 @@ export const regions = [
       ['Şanlıurfa', 'The pools of sacred carp at Balıklıgöl, a covered bazaar and old hans, and the archaeology museum.'],
       ['Harran', 'Beehive mud-brick houses and the ruins of an early Islamic university.'],
       ['Mardin old town', 'Stepped lanes, the Zinciriye and Kasımiye madrasas, and the view south over the plain.'],
-      ['Midyat and Mor Gabriel', 'Carved stone mansions and one of the oldest active monasteries in the world.'],
+      ['Midyat and Mor Gabriel', 'Carved stone mansions, and a monastery founded in 397 that is still the seat of the bishop of Tur Abdin.'],
     ],
     eat: 'Urfa’s isot pepper, lahmacun and çiğ köfte; Mardin’s içli köfte and kaburga dolması; Gaziantep’s baklava on the way.',
     when: 'March–May and October–November. Summer temperatures are very high.',
@@ -165,11 +165,11 @@ export const regions = [
     summary:
       'Türkiye’s largest lake, high on the eastern plateau, with an island church, Seljuk tombstones and the country’s most famous breakfast.',
     intro: [
-      'Lake Van sits at around 1,650 metres, ringed by volcanoes. Its water is alkaline, so few fish live in it, and the colour shifts from deep blue to green with the light. The region was the heart of the ancient kingdom of Urartu and later of medieval Armenian kingdoms.',
+      'Lake Van sits at around 1,640 metres, ringed by volcanoes. It has no outflow and its water is salty and strongly alkaline (a soda lake), so few fish live in it, and the colour shifts from deep blue to green with the light. The region was the heart of the ancient kingdom of Urartu and later of medieval Armenian kingdoms.',
       'Most visitors come for one day. Stay three: the boat to Akdamar Island, the lakeside Seljuk cemetery at Ahlat, the Urartian citadel at Van, and a long breakfast in between.',
     ],
     highlights: [
-      ['Akdamar Island', 'The tenth-century Armenian Church of the Holy Cross, its walls carved with Biblical scenes, reached by a short boat ride.'],
+      ['Akdamar Island', 'The Armenian Church of the Holy Cross, built in 915–921, its walls carved with Biblical scenes. Now a museum, reached by a short boat ride.'],
       ['Van Fortress', 'A long Urartian citadel on a rock above the old city, with cuneiform inscriptions.'],
       ['Ahlat', 'A field of carved Seljuk tombstones and domed tombs on the north-west shore.'],
       ['Hoşap Castle', 'A Kurdish castle on a crag, south-east of Van.'],

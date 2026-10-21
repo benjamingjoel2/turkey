@@ -36,7 +36,7 @@ ${pageHead({ eyebrow: 'Before you go', title: 'Mosques and Ramadan in Türkiye',
         <li><strong>Before dawn</strong> in some neighbourhoods a drummer walks the streets to wake people for <em>sahur</em>, the pre-dawn meal.</li>
         <li><strong>The holiday that follows</strong>, Ramazan Bayramı (Eid al-Fitr), is a public holiday of several days. Buses, flights and hotels fill up as families travel, and some offices and museums change their hours. Book well ahead.</li>
       </ul>
-      <p>Ramadan moves about eleven days earlier each year, following the lunar calendar. <strong>In 2027 it is expected to run from about 8 February to 9 March</strong>, with Ramazan Bayramı straight after. Kurban Bayramı (Eid al-Adha), another long holiday, falls around mid-May 2027. Exact dates are confirmed nearer the time.</p>
+      <p>Ramadan moves about eleven days earlier each year, following the lunar calendar. <strong>In 2027 the first day of fasting is 8 February</strong>, and Ramazan Bayramı is 9–11 March, according to the Diyanet (Presidency of Religious Affairs) calendar. Kurban Bayramı (Eid al-Adha), another long holiday, is expected on 16–19 May 2027. Check the official calendar before you book.</p>
       <p class="callout">Planning around holidays? See <a href="/when-to-go/">when to go</a>.</p>
     </div>
   </div>

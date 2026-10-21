@@ -9,9 +9,9 @@ export const stops = [
     story: 'The end of the road. Caravans unloaded in the great hans around the Grand Bazaar. Büyük Valide Han, built for Kösem Sultan in the mid-1600s, has three courtyards; Persian silk merchants once traded here, and some of its rooms are still workshops.',
   },
   {
-    id: 'bursa', name: 'Bursa', han: 'Koza Han', date: '1490s',
+    id: 'bursa', name: 'Bursa', han: 'Koza Han', date: '1491',
     lat: 40.184, lon: 29.061,
-    story: 'The first Ottoman capital and the western end of the silk road. Koza Han, the “cocoon han”, was built for the silk trade; every June and July a cocoon market is still held in its courtyard, around a small mosque raised on columns.',
+    story: 'The first Ottoman capital and the western end of the silk road. Koza Han, the “cocoon han”, was built for Bayezid II to fund his mosque in İstanbul, and for centuries it was the city’s market for silk cocoons. Its courtyard, around a small mosque raised on columns, is now full of silk shops and tea tables.',
   },
   {
     id: 'konya', name: 'Konya', han: 'Seljuk capital',
@@ -21,7 +21,7 @@ export const stops = [
   {
     id: 'sultanhani', name: 'Sultanhanı (Aksaray)', han: 'Sultanhanı', date: '1229',
     lat: 38.248, lon: 33.546, region: 'cappadocia',
-    story: 'One of the largest Seljuk caravanserais, on the road between Konya and Aksaray. Behind a carved stone portal is an open courtyard for summer with a small raised mosque, then a vast, cathedral-like hall for winter. Travellers stayed free for up to three days.',
+    story: 'One of the largest Seljuk caravanserais, on the road between Konya and Aksaray. Behind a carved stone portal is an open courtyard for summer with a small raised mosque, then a vast, cathedral-like hall for winter. It was built in 1229 for Sultan Alaeddin Keykubad I, and restored after a fire in 1278.',
   },
   {
     id: 'agzikara', name: 'Ağzıkarahan', han: 'Ağzıkarahan', date: '1230s',
@@ -46,7 +46,7 @@ export const stops = [
   {
     id: 'erzurum', name: 'Erzurum', han: 'Rüstem Paşa Han', date: '16th c.',
     lat: 39.906, lon: 41.276,
-    story: 'A high, cold fortress city on the road to Tabriz. The Rüstem Paşa caravanserai, built for Süleyman the Magnificent’s grand vizier, now houses workshops carving oltu taşı, a local black jet.',
+    story: 'A high, cold fortress city on the road to Tabriz. The Rüstem Paşa caravanserai (Taşhan), completed in 1561 for Süleyman the Magnificent’s grand vizier, now houses around a hundred workshops and shops carving oltu taşı, a local black jet.',
   },
   {
     id: 'trabzon', name: 'Trabzon', han: 'Black Sea port', date: 'Medieval',
@@ -61,7 +61,7 @@ export const stops = [
   {
     id: 'urfa', name: 'Şanlıurfa', han: 'Gümrük Hanı', date: '1560s',
     lat: 37.159, lon: 38.792, region: 'southeast',
-    story: 'On the southern route from Aleppo and Mesopotamia. The Ottoman customs han, Gümrük Hanı, is still a busy courtyard of tea tables in the middle of the covered bazaar.',
+    story: 'On the southern route from Aleppo and Mesopotamia. The Ottoman customs han, Gümrük Hanı, built in the early 1560s, is still a busy courtyard of tea tables beside the covered bazaar.',
   },
   {
     id: 'mardin', name: 'Mardin', han: 'Old caravan town', date: 'Medieval',
