@@ -51,6 +51,7 @@ code { font: 0.88em var(--font-mono); background: var(--c-stone); padding: 0.1em
 .prose h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-top: 1.6em; }
 .prose h2:first-child { margin-top: 0; }
 .prose li { margin-bottom: 0.4em; }
+.prose .photo { margin: 1.5rem 0 2rem; }
 
 .skip { position: absolute; left: -999px; top: 0; background: var(--c-white); color: var(--c-ink); padding: 0.6rem 1rem; z-index: 100; }
 .skip:focus { left: 0.5rem; top: 0.5rem; }

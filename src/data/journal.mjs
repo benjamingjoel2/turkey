@@ -34,7 +34,7 @@ export const posts = [
     slug: 'reading-a-turkish-breakfast',
     title: 'Reading a Turkish breakfast',
     date: '2026-09-01',
-    photo: null,
+    photo: 'breakfast',
     summary: 'Kahvaltı is the meal to plan your day around. A short guide to the small plates.',
     body: `
 <p>The word <em>kahvaltı</em> means “before coffee”, and a proper one is a meal of many small plates rather than a single dish. Tea, not coffee, comes in a tulip glass, refilled until you lay your teaspoon across the top.</p>

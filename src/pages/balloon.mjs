@@ -72,6 +72,7 @@ ${photoHero({ photo: 'balloons', eyebrow: 'Before you go · Cappadocia', title: 
     <p>Very cheap flights usually mean big baskets and short flights. We work only with licensed operators and will explain exactly what each option includes.</p>
 
     <h2 id="ground">If you don’t fly</h2>
+    ${img('goreme', { ratio: 3 / 2, sizes: '(min-width: 62em) 50vw, 100vw' })}
     <p>The balloons are almost as beautiful from the ground, and watching costs nothing. Find a viewpoint above Göreme or one of the valley ridges before sunrise and watch a hundred envelopes inflate and rise. Some cave hotels have roof terraces for exactly this.</p>
     <p class="callout">Read more about <a href="/regions/cappadocia/">Cappadocia</a>, or our journal piece <a href="/journal/spare-mornings/">in praise of spare mornings</a>.</p>
     </div>

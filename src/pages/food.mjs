@@ -27,6 +27,7 @@ ${photoHero({ photo: 'spiceStall', eyebrow: 'Food', title: 'Eating your way acro
 <section class="section section-stone">
   <div class="wrap two-col">
     <div class="prose">
+      ${img('breakfast', { ratio: 4 / 3, sizes: '(min-width: 56em) 45vw, 100vw' })}
       <h2>Breakfast, tea and coffee</h2>
       <p><strong>Kahvaltı</strong>, breakfast, is a spread of small plates: cheeses, olives, tomatoes, cucumbers, honey and kaymak, eggs, and bread. Read our <a href="/journal/reading-a-turkish-breakfast/">guide to the Turkish breakfast</a>.</p>
       <p><strong>Tea (çay)</strong> is served all day in small tulip glasses, strong and without milk. Accepting a glass when it’s offered is part of doing business, and of making friends.</p>

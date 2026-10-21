@@ -135,26 +135,17 @@ photo only where it was taken at the place it illustrates.** Each entry in
   and the landmark is unmistakable (used for three photos; see
   `FACTS-TO-VERIFY.md`).
 
-**Lake Van has no photo yet.** None was confirmed in time, so the page shows
-a labelled tile panel instead of a photo from somewhere else. To add one:
+If a place has no location-verified photo, leave its `photos` list empty:
+the page shows a labelled star-pattern panel instead of a photo from somewhere
+else. To add a photo:
 
-1. Find a photo on unsplash.com and open its page. Check the location shown
-   under the photo (or the photographer's caption) is Lake Van, Akdamar or Van.
+1. Find it on unsplash.com and open its page. Check the location shown under
+   the photo (or the photographer's caption) matches the place.
 2. Add an entry to `photos.mjs`: the `id` comes from the photo URL. For `src`,
    use the image URL ("Copy image address", without the query string) or the
    `urls.raw` value from the Unsplash API. Fill in `w`, `h`, `name`,
    `username`, `place`, a descriptive `alt`, and `verified`.
-3. Put the key in `photos: []` for `lake-van` in `src/data/regions.mjs`.
-
-## Sources
-
-Facts are backed by references in `src/data/sources.mjs`. Each entry names the
-pages it supports (`where`), and those pages automatically get a short
-"Sources for this page" list; `/sources/` shows them all. When you check or
-change a fact, update its entry and `CHECKED`, and tick it in
-`FACTS-TO-VERIFY.md`. Where an official source exists (muze.gov.tr,
-diyanet.gov.tr, shgm.gov.tr), prefer it over secondary ones. Avoid link text
-containing "Turkey"; the build counts visible mentions.
+3. Reference its key from a page or a region's `photos` list.
 
 ## Before launch
 

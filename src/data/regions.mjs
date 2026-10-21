@@ -9,7 +9,7 @@ export const regions = [
     lat: 41.008, lon: 28.98,
     name: 'İstanbul',
     kicker: 'Where the caravans ended',
-    photos: ['hagiaSophia', 'suleymaniye'],
+    photos: ['hagiaSophia', 'ferry'],
     summary:
       'Two continents, three empires and a skyline of domes. Give it longer than you think: four days is a start.',
     intro: [
@@ -32,7 +32,7 @@ export const regions = [
     lat: 38.643, lon: 34.828,
     name: 'Cappadocia',
     kicker: 'Stone, rose and sunrise',
-    photos: ['balloons'],
+    photos: ['balloons', 'roseValley'],
     summary:
       'Valleys of soft volcanic tuff carved into churches, dovecotes and whole underground cities. Walk it, don’t just fly over it.',
     intro: [
@@ -101,7 +101,7 @@ export const regions = [
     lat: 36.2, lon: 29.64,
     name: 'The Lycian coast',
     kicker: 'Tombs above the sea',
-    photos: ['kas', 'oludeniz'],
+    photos: ['kas', 'kekova'],
     summary:
       'Pine mountains dropping into clear water, rock-cut tombs in the cliffs and the Lycian Way footpath linking it all.',
     intro: [
@@ -170,7 +170,7 @@ export const regions = [
     lat: 38.63, lon: 42.9,
     name: 'Lake Van',
     kicker: 'A soda sea in the mountains',
-    photos: [],
+    photos: ['akdamar', 'lakeVan'],
     summary:
       'Türkiye’s largest lake, high on the eastern plateau, with an island church, Seljuk tombstones and the country’s most famous breakfast.',
     intro: [

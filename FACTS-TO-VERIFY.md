@@ -110,4 +110,5 @@ still unchecked.
 
 ## Photos (`src/data/photos.mjs`)
 - [ ] Three photos have no Unsplash location tag and were accepted on the photographer's caption plus an unmistakable landmark: Cappadocia balloons (`sqWpPdIU_ao`), Ephesus/Library of Celsus (`5X7tBwSV9KU`), Sumela Monastery (`mXfq5VCQ_Pw`). Replace them with geotagged photos if you want a stricter standard.
-- [ ] Lake Van has no photo yet (shows a tile panel). Add one only once its location is confirmed.
+- [x] Lake Van photos added (Akdamar church and Lake Van from Akdamar), both with Unsplash location tags.
+- [x] Rejected during selection: two "Turkish breakfast" photos whose location tags were Baku and Wilmslow (UK).
