@@ -11,8 +11,8 @@ export default function balloon() {
 ${photoHero({ photo: 'balloons', eyebrow: 'Before you go · Cappadocia', title: 'The Cappadocia <em>balloon</em> guide', lede: 'A sunrise flight over the valleys is unforgettable, but it is not guaranteed. Balloons only fly when the wind allows, and in some weeks that means several cancelled mornings in a row. Plan for it and you’ll almost certainly get your flight.', size: 'short' })}
 
 <section class="section">
-  <div class="wrap prose">
-    <nav class="toc" aria-label="On this page">
+  <div class="wrap region-grid">
+    <nav class="toc toc-side" aria-label="On this page">
       <ol>
         <li><a href="#when">When flights run</a></li>
         <li><a href="#why">Why flights are cancelled</a></li>
@@ -21,6 +21,7 @@ ${photoHero({ photo: 'balloons', eyebrow: 'Before you go · Cappadocia', title: 
         <li><a href="#ground">If you don’t fly</a></li>
       </ol>
     </nav>
+    <div class="prose">
 
     <h2 id="when">When flights run</h2>
     <p>Flights take off around sunrise, when the air is coolest and calmest. Expect a hotel pick-up roughly an hour before dawn, about an hour in the air, and to be back for a late breakfast. In midsummer that means a very early start.</p>
@@ -73,6 +74,7 @@ ${photoHero({ photo: 'balloons', eyebrow: 'Before you go · Cappadocia', title: 
     <h2 id="ground">If you don’t fly</h2>
     <p>The balloons are almost as beautiful from the ground, and watching costs nothing. Find a viewpoint above Göreme or one of the valley ridges before sunrise and watch a hundred envelopes inflate and rise. Some cave hotels have roof terraces for exactly this.</p>
     <p class="callout">Read more about <a href="/regions/cappadocia/">Cappadocia</a>, or our journal piece <a href="/journal/spare-mornings/">in praise of spare mornings</a>.</p>
+    </div>
   </div>
 </section>
 </article>`,
