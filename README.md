@@ -79,7 +79,8 @@ FACTS-TO-VERIFY.md     Everything that needs checking before launch
 | `/etiquette/` (mosques and Ramadan) | `src/pages/etiquette.mjs` |
 | `/food/` | `src/pages/food.mjs` |
 | `/journeys/`, `/when-to-go/`, `/stays/` | `src/pages/plan.mjs` |
-| `/about/`, `/journal/…`, `/enquire/`, `/credits/`, `404` | `src/pages/site.mjs` |
+| `/about/`, `/journal/…`, `/enquire/`, `404` | `src/pages/site.mjs` |
+| `/privacy/`, `/booking-terms/`, `/cookies/` | `src/pages/legal.mjs` (copy in `src/data/legal.mjs`) |
 
 ## Common edits
 
@@ -87,9 +88,10 @@ FACTS-TO-VERIFY.md     Everything that needs checking before launch
 heroes, Newsreader (serif, with italic accents) for headings, Instrument Sans
 for text and Geist Mono for small details such as coordinates and indexes,
 hairline dividers, and pill buttons with an arrow. The brand mark is an
-eight-pointed Seljuk star, drawn in `star()` in `src/layout.mjs`. Fonts come from
-Google Fonts via `fonts.googleHref` in the config. Set it to `''` to use system
-fonts only. Useful building blocks in `src/layout.mjs`: `photoHero()`,
+eight-pointed Seljuk star, drawn in `star()` in `src/layout.mjs`. Fonts are
+self-hosted in `src/assets/fonts/` (downloaded from Google Fonts; the latin-ext
+files are cut down to the Turkish letters ı İ ş Ş ğ Ğ plus œ Œ Ÿ š ž, see the
+comment in `site.config.mjs`). The display font is preloaded in `src/layout.mjs`. Useful building blocks in `src/layout.mjs`: `photoHero()`,
 `pageHead()`, `marker()` (the "(01) Label" section markers), `button()`,
 `img()` and `coords()`. Add `class="reveal"` to any block to fade it in on
 scroll.
@@ -125,8 +127,10 @@ the next begins.
 
 ## Photos
 
-All photos are from Unsplash, served from Unsplash's CDN with responsive sizes,
-and credited under each image and on `/credits/`. The rule is strict: **use a
+All photos are from Unsplash, served from Unsplash's CDN with responsive sizes.
+The owner asked for no per-image credit lines and no credits page (Unsplash
+does not require attribution; `/credits/` now redirects to `/about/`). Keep the
+photographer details in `photos.mjs` all the same. The rule is strict: **use a
 photo only where it was taken at the place it illustrates.** Each entry in
 `src/data/photos.mjs` records how that was checked:
 
@@ -147,14 +151,38 @@ else. To add a photo:
    `username`, `place`, a descriptive `alt`, and `verified`.
 3. Reference its key from a page or a region's `photos` list.
 
+## Languages
+
+English is the default (current URLs); French, German and Spanish are built
+under `/fr/`, `/de/` and `/es/`. The English pages are built first, then
+`scripts/translate-site.cjs` writes a pre-rendered copy of every page per
+language from the dictionaries in `i18n/<lang>.json` (keys are the English
+text, inline HTML included). It also sets `<html lang>`, canonical, hreflang
+(en, fr, de, es, x-default) and the sitemap, and translates the string literals
+in the client scripts. The legal pages come from `src/data/legal.mjs`, written
+in all four languages (`i18n/extra.cjs`). No translation code runs in the
+browser.
+
+When you change or add English copy:
+
+1. `node build.mjs` then `node scripts/translate-site.cjs extract` writes every
+   string to `i18n/strings.en.json`.
+2. Add the new strings to `i18n/fr.json`, `de.json` and `es.json`.
+3. `I18N_STRICT=1 node build.mjs` fails if any string is untranslated.
+
+In client scripts keep user-facing text in plain `'...'` literals (with
+`{placeholders}`), not inside template literals, so they can be translated.
+
 ## Before launch
 
 1. Work through **[FACTS-TO-VERIFY.md](FACTS-TO-VERIFY.md)**: visas, tickets,
    opening status, seasons, holiday dates, Lycian Way distances.
-2. Replace the placeholder contact details and stay names.
+2. Replace the placeholder stay names (`src/data/stays.mjs`); see
+   [IMAGES-NEEDED.md](IMAGES-NEEDED.md) if you add photos of named places.
+   Have a lawyer review the privacy, booking-terms and cookie pages.
 3. Set `enquiry.endpoint`, or accept the email fallback.
 4. Set `siteUrl` to the real domain.
 
 Content rules the site follows, which future edits should keep: no invented
 reviews, testimonials, press logos or awards; "Türkiye" in headings, with
-"Turkey" mentioned once (home page); every photo location-checked and credited.
+"Turkey" mentioned once (home page); every photo location-checked.

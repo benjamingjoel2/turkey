@@ -7,6 +7,16 @@
   const boxes = [...root.querySelectorAll('input[name="stage"]')];
   const DIFF = { 1: 'Easy', 2: 'Moderate', 3: 'Hard' };
   const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  // Plain string literals so the build can translate them (see scripts/translate-site.cjs).
+  const fill = (t, v) => t.replace(/\{(\w+)\}/g, (m, k) => v[k]);
+  const T = {
+    days: 'Walking days', distance: 'Distance', time: 'Walking time', hardest: 'Hardest',
+    hardOne: '{n} hard day: long climbs, start early and carry extra water.',
+    hardMany: '{n} hard days: long climbs, start early and carry extra water.',
+    gaps: 'Transfers needed between: {list}.',
+    sleep: 'Where you’ll sleep',
+    start: 'Plus a night at the start, in or near {place}.',
+  };
   const hours = (h) => h.split('–').map(Number);
 
   const render = () => {
@@ -30,16 +40,16 @@
     }
     out.innerHTML = `
       <dl class="totals">
-        <div><dt>Walking days</dt><dd>${picked.length}</dd></div>
-        <div><dt>Distance</dt><dd>≈${km} km</dd></div>
-        <div><dt>Walking time</dt><dd>${lo === hi ? lo : `${lo}–${hi}`} h</dd></div>
-        <div><dt>Hardest</dt><dd>${DIFF[hardest]}</dd></div>
+        <div><dt>${T.days}</dt><dd>${picked.length}</dd></div>
+        <div><dt>${T.distance}</dt><dd>≈${km} km</dd></div>
+        <div><dt>${T.time}</dt><dd>${lo === hi ? lo : `${lo}–${hi}`} h</dd></div>
+        <div><dt>${T.hardest}</dt><dd>${DIFF[hardest]}</dd></div>
       </dl>
-      ${hardDays ? `<p>${hardDays} hard day${hardDays > 1 ? 's' : ''}: long climbs, start early and carry extra water.</p>` : ''}
-      ${gaps.length ? `<p class="warn">Transfers needed between: ${gaps.map(esc).join('; ')}.</p>` : ''}
-      <h3 class="h4">Where you’ll sleep</h3>
+      ${hardDays ? `<p>${fill(hardDays > 1 ? T.hardMany : T.hardOne, { n: hardDays })}</p>` : ''}
+      ${gaps.length ? `<p class="warn">${fill(T.gaps, { list: gaps.map(esc).join('; ') })}</p>` : ''}
+      <h3 class="h4">${T.sleep}</h3>
       <ol class="sleeps">${picked.map((s) => `<li>${esc(s.sleep)}</li>`).join('')}</ol>
-      <p class="small">Plus a night at the start, in or near ${esc(picked[0].from)}.</p>`;
+      <p class="small">${fill(T.start, { place: esc(picked[0].from) })}</p>`;
   };
 
   boxes.forEach((b) => b.addEventListener('change', render));

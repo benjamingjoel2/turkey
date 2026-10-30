@@ -40,7 +40,7 @@ ${pageHead({ eyebrow: 'Journeys', title: 'Sample journeys through <em>Türkiye</
 function whenPage() {
   return {
     path: '/when-to-go/',
-    title: 'When to go to <em>Türkiye</em>',
+    title: 'When to go to Türkiye',
     description: 'The best months to visit each region of Türkiye, plus notes on summer heat, winter, public holidays and Ramadan.',
     body: html`
 ${pageHead({ eyebrow: 'Planning', title: 'When to go to Türkiye',

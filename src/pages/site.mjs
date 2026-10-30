@@ -1,4 +1,4 @@
-// About, Journal, Enquiry, Credits and 404.
+// About, Journal, Enquiry, Sources and 404.
 import config from '../../site.config.mjs';
 import { html, img, pageHead, photoHero, esc, arrow } from '../layout.mjs';
 import { posts } from '../data/journal.mjs';
@@ -34,13 +34,12 @@ ${pageHead({ eyebrow: 'About', title: `About ${esc(brand.name)}`, lede: esc(bran
       <h2>What we won’t do</h2>
       <ul>
         <li>Publish reviews, awards or press mentions we can’t show you the source for.</li>
-        <li>Use a photo that wasn’t taken where we say it was. Every image is credited, with how we checked its location, on our <a href="/credits/">credits page</a>.</li>
+        <li>Use a photo that wasn’t taken where we say it was. We check where every photo was taken before we use it.</li>
         <li>Pretend facts never change. Visa rules, tickets and opening hours move, and we tell you to check them.</li>
       </ul>
       <h2>Contact</h2>
       <ul class="plain">
         <li>Email: <a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></li>
-        <li>Phone: <a href="tel:${esc(contact.phone.replace(/\s/g, ''))}">${esc(contact.phone)}</a></li>
         <li>${esc(contact.address)}</li>
         <li>${esc(contact.hours)}</li>
       </ul>
@@ -144,10 +143,9 @@ ${pageHead({ eyebrow: 'Enquire', title: 'Plan a journey through <em>Türkiye</em
     </form>
     <aside class="aside-box">
       <div>
-        <h2 class="mono-label">Prefer to talk?</h2>
+        <h2 class="mono-label">Prefer email?</h2>
         <ul class="plain">
           <li><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></li>
-          <li><a href="tel:${esc(contact.phone.replace(/\s/g, ''))}">${esc(contact.phone)}</a></li>
           <li class="small">${esc(contact.hours)}</li>
         </ul>
       </div>
@@ -160,35 +158,6 @@ ${pageHead({ eyebrow: 'Enquire', title: 'Plan a journey through <em>Türkiye</em
         </ol>
       </div>
     </aside>
-  </div>
-</section>`,
-  };
-}
-
-function credits() {
-  return {
-    path: '/credits/',
-    title: 'Photo credits',
-    description: 'Credits for every photograph on the site, and how each photo’s location was checked.',
-    body: html`
-${pageHead({ eyebrow: 'Credits', title: 'Photo credits', lede: 'All photos are from Unsplash and are used under the Unsplash licence. We only use a photo where it was taken at the place it illustrates; the last column says how we checked.' })}
-<section class="section">
-  <div class="wrap">
-    <div class="table-scroll" role="region" aria-labelledby="credits-caption" tabindex="0">
-      <table class="credits">
-        <caption id="credits-caption">Photographs used on this site</caption>
-        <thead><tr><th scope="col">Place</th><th scope="col">Photographer</th><th scope="col">Location checked by</th></tr></thead>
-        <tbody>
-          ${Object.values(photos).map((p) => html`<tr>
-            <th scope="row"><a href="${p.page}">${esc(p.place)}</a></th>
-            <td><a href="${p.profile}">${esc(p.name)}</a> on <a href="${p.unsplash}">Unsplash</a></td>
-            <td>${esc(p.verified)}</td>
-          </tr>`)}
-        </tbody>
-      </table>
-    </div>
-    <p>Where we haven’t yet found a photo whose location we can confirm, we show a tile pattern instead of a near-miss.</p>
-    <p>Map outline: <a href="https://www.naturalearthdata.com/">Natural Earth</a>, public domain.</p>
   </div>
 </section>`,
   };
@@ -232,5 +201,5 @@ ${pageHead({ eyebrow: '404', title: 'This road doesn’t go <em>anywhere</em>', 
 }
 
 export default function site() {
-  return [about(), ...journal(), enquire(), credits(), sourcesPage(), notFound()];
+  return [about(), ...journal(), enquire(), sourcesPage(), notFound()];
 }
