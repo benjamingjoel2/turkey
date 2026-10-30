@@ -29,17 +29,17 @@ export default {
   },
 
   // Public URL once deployed (used for canonical links and the sitemap).
-  siteUrl: 'https://kervan-journeys.vercel.app',
+  siteUrl: 'https://kervanjourneys.tourground.com',
   locale: 'en-GB',
 
   // PLACEHOLDER contact details: replace before launch.
   contact: {
-    email: 'hello@kervan-journeys.example',
-    phone: '+90 000 000 00 00',
-    whatsapp: '', // e.g. '+905550000000'; leave empty to hide
-    address: 'Placeholder address, İstanbul',
+    // One address per brand, in the owner's format {brandname}@tourground.com.
+    email: 'kervanjourneys@tourground.com',
+    // Business address: Kolektif House Levent, İstanbul (owner-approved coworking arrangement).
+    // Source: OpenStreetMap, "Kolektif House Levent", Harman Sokağı 5, Ortabayır, 34413 Kâğıthane.
+    address: 'Kolektif House Levent, Harman Sokağı No. 5, Ortabayır, 34413 Kâğıthane, İstanbul, Türkiye',
     hours: 'Mon–Fri, 09:00–18:00 (Türkiye time, UTC+3)',
-    instagram: '', // e.g. 'https://instagram.com/yourhandle'; empty hides it
   },
 
   // Enquiry form. On a static host the form needs somewhere to send data.
@@ -80,9 +80,10 @@ export default {
   ],
 
   fonts: {
-    // Google Fonts (all three include the Turkish characters ı İ ş ğ ç ö ü).
-    // To go font-free, set `googleHref` to '' and use system stacks below.
-    googleHref: 'https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Instrument+Sans:wght@400..600&family=Geist+Mono:wght@400;500&display=swap',
+    // Self-hosted in src/assets/fonts (fonts.css lists them). They were downloaded from this
+    // Google Fonts URL (latin + latin-ext), and the latin-ext files were cut down to the
+    // Turkish letters ı İ ş Ş ğ Ğ plus œ Œ Ÿ š ž, so every page still renders Turkish names:
+    // https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Instrument+Sans:wght@400..600&family=Geist+Mono:wght@400;500&display=swap
     display: '"Newsreader", "Iowan Old Style", Georgia, serif',
     body: '"Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
     mono: '"Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace',

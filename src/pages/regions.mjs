@@ -38,7 +38,7 @@ ${r.photos[0]
         <h1 class="display">${r.name}</h1>
         <div class="hero-foot"><p class="lede">${r.summary}</p></div>
       </div>
-      <p class="hero-meta wrap"><span class="mono">${coords(r.lat, r.lon)}</span><span>No location-verified photo yet · <a href="/credits/">credits</a></span></p>
+      <p class="hero-meta wrap"><span class="mono">${coords(r.lat, r.lon)}</span><span>No location-verified photo yet</span></p>
     </section>`}
 <section class="section">
   <div class="wrap region-grid">

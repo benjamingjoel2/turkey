@@ -3,6 +3,8 @@
 (() => {
   const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+  const T = { region: 'Travel in this region', prev: '← Previous', next: 'Next →' };
+
   document.querySelectorAll('[data-caravan]').forEach((root) => {
     const stops = JSON.parse(root.querySelector('[data-stops]').textContent);
     const panel = root.querySelector('[data-panel]');
@@ -17,10 +19,10 @@
         <h3>${esc(s.name)}</h3>
         <p class="map-han">${esc(s.han)}, ${esc(s.date)}</p>
         <p>${esc(s.story)}</p>
-        ${s.region ? `<p><a href="${s.region}">Travel in this region</a></p>` : ''}
+        ${s.region ? `<p><a href="${s.region}">${T.region}</a></p>` : ''}
         <p class="map-nav">
-          ${s.n > 1 ? `<button type="button" data-go="${stops[s.n - 2].id}">← Previous</button>` : ''}
-          ${s.n < stops.length ? `<button type="button" data-go="${stops[s.n].id}">Next →</button>` : ''}
+          ${s.n > 1 ? `<button type="button" data-go="${stops[s.n - 2].id}">${T.prev}</button>` : ''}
+          ${s.n < stops.length ? `<button type="button" data-go="${stops[s.n].id}">${T.next}</button>` : ''}
         </p>`;
       document.querySelectorAll('.stops li').forEach((li) => li.classList.toggle('is-active', li.id === `stop-${id}`));
       if (scroll && window.matchMedia('(max-width: 61.99em)').matches) panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' });

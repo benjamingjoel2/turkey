@@ -37,11 +37,13 @@ export const arrow = '<svg class="arrow" width="14" height="14" viewBox="0 0 14 
 export const button = (href, label, variant = '') =>
   `<a class="btn ${variant}" href="${href}"><span>${label}</span><span class="btn-disc">${arrow}</span></a>`;
 
-const WIDTHS = [480, 800, 1200, 1600, 2000, 2600];
+// 1100 (not 1200) is the step a ~393px phone at 2.75x needs, so it skips a larger file.
+const WIDTHS = [480, 800, 1100, 1600, 2000, 2600];
 const cdn = (src, w, h) =>
   `${src}&w=${w}${h ? `&h=${h}` : ''}&fit=crop&crop=entropy&auto=format&q=68`;
 
-// Responsive Unsplash image with its credit underneath.
+// Responsive Unsplash image with its location underneath. (The Unsplash licence does not
+// require credit; photographer details stay in src/data/photos.mjs.)
 // ratio: crop to this width/height ratio (e.g. 16/9); defaults to the original.
 export function img(key, { sizes = '100vw', eager = false, ratio, className = '', credit = true } = {}) {
   const p = photos[key];
@@ -58,14 +60,14 @@ export function img(key, { sizes = '100vw', eager = false, ratio, className = ''
 
 export const photoCredit = (key) => {
   const p = photos[key];
-  return `<figcaption class="credit">${esc(p.place)} · Photo <a href="${p.profile}">${esc(p.name)}</a> / <a href="${p.unsplash}">Unsplash</a></figcaption>`;
+  return `<figcaption class="credit">${esc(p.place)}</figcaption>`;
 };
 
 // A decorative tile panel used where no location-verified photo exists yet.
 export function tilePanel(label, className = '') {
   return html`<figure class="photo tile-panel ${className}" role="img" aria-label="${esc(label)}">
   <div class="tile-panel-inner">${star(56)}<span>${esc(label)}</span></div>
-  <figcaption class="credit">No location-verified photo yet · <a href="/credits/">credits</a></figcaption>
+  <figcaption class="credit">No location-verified photo yet</figcaption>
 </figure>`;
 }
 
@@ -120,6 +122,18 @@ function pageSources(path) {
 </aside>`;
 }
 
+// Language selector. scripts/translate-site.cjs points each link at the same page in that
+// language and marks the current one; data-lang-link keeps the links out of the URL rewrite.
+const LANGS = [['en', 'English'], ['fr', 'Français'], ['de', 'Deutsch'], ['es', 'Español']];
+// Compact version for mid-width screens, where the inline list would push the nav onto two
+// lines: a <details> dropdown (no JavaScript) showing the current language.
+const langCompact = () =>
+  `<details class="lang-compact mono"><summary aria-label="Language"><span data-lang-current>EN</span></summary>${langSelect('lang-select-drop')}</details>`;
+const langSelect = (cls) =>
+  `<nav class="lang-select mono ${cls}" aria-label="Language"><ul>${LANGS.map(
+    ([code, name]) => `<li><a href="/" data-lang-link="${code}" hreflang="${code}" lang="${code}" aria-label="${name}">${code.toUpperCase()}</a></li>`
+  ).join('')}</ul></nav>`;
+
 export function layout({ path, title, description, body, scripts = [] }) {
   const { brand, siteUrl, contact, locale, fonts, palette } = config;
   const fullTitle = path === '/' ? `${brand.name}: ${brand.tagline}` : `${title} · ${brand.name}`;
@@ -140,9 +154,7 @@ export function layout({ path, title, description, body, scripts = [] }) {
 <meta name="theme-color" content="${palette.iznikDeep}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://images.unsplash.com">
-${fonts.googleHref ? `<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="${fonts.googleHref.replace(/&/g, '&amp;')}">` : ''}
+<link rel="preload" href="/fonts/Newsreader-300-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
 <script>document.documentElement.classList.replace('no-js','js')</script>
 </head>
@@ -157,10 +169,13 @@ ${fonts.googleHref ? `<link rel="preconnect" href="https://fonts.googleapis.com"
       </ol>
       <div class="nav-extra">
         <p class="mono-label">Contact</p>
-        <p><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a><br><a href="tel:${esc(contact.phone.replace(/\s/g, ''))}">${esc(contact.phone)}</a></p>
+        <p><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></p>
+        ${langSelect('lang-select-menu')}
       </div>
     </nav>
     <div class="header-actions">
+      ${langSelect('lang-select-header')}
+      ${langCompact()}
       <a class="btn btn-small btn-header" href="/enquire/"${current('/enquire/')}><span>Enquire</span><span class="btn-disc">${arrow}</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-label">Menu</span><span class="nav-toggle-bars" aria-hidden="true"></span></button>
     </div>
@@ -193,14 +208,12 @@ ${pageSources(path)}
       </div>
       <div>
         <p class="mono-label">Studio</p>
-        <ul class="plain">${NAV.slice(5).map(([h, l]) => `<li><a href="${h}">${l}</a></li>`)}<li><a href="/sources/">Sources</a></li><li><a href="/credits/">Photo credits</a></li></ul>
+        <ul class="plain">${NAV.slice(5).map(([h, l]) => `<li><a href="${h}">${l}</a></li>`)}<li><a href="/sources/">Sources</a></li></ul>
       </div>
       <div>
         <p class="mono-label">Contact</p>
         <ul class="plain">
-          <li><a href="tel:${esc(contact.phone.replace(/\s/g, ''))}">${esc(contact.phone)}</a></li>
-          ${contact.whatsapp ? `<li><a href="https://wa.me/${esc(contact.whatsapp.replace(/\D/g, ''))}">WhatsApp</a></li>` : ''}
-          ${contact.instagram ? `<li><a href="${esc(contact.instagram)}">Instagram</a></li>` : ''}
+          <li><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></li>
           <li>${esc(contact.address)}</li>
           <li class="small">${esc(contact.hours)}</li>
         </ul>
@@ -210,6 +223,7 @@ ${pageSources(path)}
     <div class="footer-base small">
       <p>${esc(brand.nameStory)}</p>
       <p>Visa rules, opening hours, ticket prices and seasons change: please confirm with official sources before you travel.</p>
+      <p class="footer-legal"><a href="/privacy/">Privacy policy</a> · <a href="/booking-terms/">Booking terms</a> · <a href="/cookies/">Cookie policy</a></p>
       <p class="mono">© ${new Date().getFullYear()} ${esc(brand.name)}</p>
     </div>
   </div>

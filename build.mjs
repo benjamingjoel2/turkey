@@ -8,10 +8,12 @@ import { watch } from 'node:fs';
 import { spawn } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { createRequire } from 'node:module';
+import { existsSync } from 'node:fs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const DIST = join(ROOT, 'dist');
-const PAGES = ['home', 'regions', 'caravan', 'balloon', 'lycian', 'etiquette', 'food', 'plan', 'site'];
+const PAGES = ['home', 'regions', 'caravan', 'balloon', 'lycian', 'etiquette', 'food', 'plan', 'site', 'legal'];
 
 // ── Colour maths for the WCAG check ─────────────────────────────────────────
 const lum = (hex) => {
@@ -87,7 +89,13 @@ async function build() {
   const vars = Object.entries(p).map(([k, v]) => `  --c-${kebab(k)}: ${v};`).join('\n');
   const theme = `:root {\n${vars}\n  --font-display: ${config.fonts.display};\n  --font-body: ${config.fonts.body};\n  --font-mono: ${config.fonts.mono};\n  --tile: ${tile(p)};\n}\n`;
   const css = await readFile(join(ROOT, 'src/assets/styles.css'), 'utf8');
-  await writeFile(join(DIST, 'styles.css'), theme + css);
+  // Self-hosted fonts (src/assets/fonts): @font-face rules go into the one stylesheet.
+  const fontsCss = await readFile(join(ROOT, 'src/assets/fonts/fonts.css'), 'utf8');
+  await writeFile(join(DIST, 'styles.css'), theme + fontsCss + css);
+  await mkdir(join(DIST, 'fonts'), { recursive: true });
+  for (const f of await readdir(join(ROOT, 'src/assets/fonts'))) {
+    if (f.endsWith('.woff2')) await cp(join(ROOT, 'src/assets/fonts', f), join(DIST, 'fonts', f));
+  }
   await writeFile(join(DIST, 'favicon.svg'), favicon(config));
   for (const f of await readdir(join(ROOT, 'src/assets'))) {
     if (f.endsWith('.js')) await cp(join(ROOT, 'src/assets', f), join(DIST, f));
@@ -98,6 +106,7 @@ async function build() {
 
   // 4. Content checks
   const files = new Set(['/styles.css', '/favicon.svg', '/sitemap.xml', '/robots.txt',
+    ...(await readdir(join(ROOT, 'src/assets/fonts'))).filter((f) => f.endsWith('.woff2')).map((f) => '/fonts/' + f),
     ...(await readdir(join(ROOT, 'src/assets'))).filter((f) => f.endsWith('.js')).map((f) => '/' + f)]);
   let turkeyCount = 0;
   for (const [path, text] of out) {
@@ -128,6 +137,11 @@ async function build() {
     throw new Error(`${errors.length} check(s) failed`);
   }
   console.log(`✓ Built ${pages.length} pages to dist/ in ${Date.now() - t0} ms (contrast, links and headings checked)`);
+
+  // 5. French, German and Spanish copies of every page (dist/fr/, dist/de/, dist/es/), from i18n/<lang>.json.
+  if (existsSync(join(ROOT, 'i18n', 'fr.json'))) {
+    createRequire(import.meta.url)('./scripts/translate-site.cjs').build(ROOT, { strict: process.env.I18N_STRICT === '1' });
+  }
 }
 
 if (process.argv.includes('--watch')) {
