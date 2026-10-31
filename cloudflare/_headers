@@ -1,0 +1,16 @@
+# Cloudflare Pages response headers (ported from vercel.json). Copied into dist/ by `npm run cf-pages`.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*.js
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*.svg
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

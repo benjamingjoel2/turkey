@@ -8,6 +8,7 @@
   "scripts": {
     "build": "node build.mjs",
     "dev": "node scripts/serve.mjs --watch",
-    "start": "node scripts/serve.mjs"
+    "start": "node scripts/serve.mjs",
+    "cf-pages": "node build.mjs && cp cloudflare/_* dist/"
   }
 }
