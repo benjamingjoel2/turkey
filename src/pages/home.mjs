@@ -2,7 +2,7 @@ import config from '../../site.config.mjs';
 import { html, img, tilePanel, photoHero, button, marker, coords, nn, arrow } from '../layout.mjs';
 import { regions } from '../data/regions.mjs';
 import { journeys } from '../data/journeys.mjs';
-import { caravanMap } from './caravan.mjs';
+import { routeList } from './caravan.mjs';
 
 export const regionCard = (r, i) => html`<li class="card reveal">
   ${r.photos[0] ? img(r.photos[0], { ratio: 4 / 5, sizes: '(min-width: 64em) 22vw, (min-width: 40em) 46vw, 100vw' }) : tilePanel(r.name)}
@@ -17,7 +17,6 @@ export default function home() {
     path: '/',
     title: 'Home',
     description: `${brand.name} plans slow, small journeys through Türkiye for travellers who love history and food: İstanbul, Cappadocia, the Aegean ruins, the Lycian coast and the east.`,
-    scripts: ['/caravan.js'],
     body: html`
 <section class="hero hero-home" data-hero>
   ${img('balloons', { eager: true, className: 'hero-media', credit: false, sizes: '100vw' })}
@@ -68,9 +67,10 @@ export default function home() {
   <div class="wrap">
     <div class="section-head">
       <div>${marker(3, 'Signature · The caravan road')}<h2>Follow the <em>caravans</em></h2></div>
-      <p class="lede">For centuries caravans crossed Anatolia from Persia and Mesopotamia to İstanbul and the coasts, resting in stone inns a day’s march apart. Choose a stop to read its story.</p>
+      <p class="lede">For centuries caravans crossed Anatolia from Persia and Mesopotamia to İstanbul and the coasts, resting in stone inns a day’s march apart.</p>
     </div>
-    ${caravanMap({ compact: true })}
+    ${routeList(8)}
+    <p style="margin-top:2rem"><a class="link-arrow link-arrow-light" href="/caravan-route/">The caravan route ${arrow}</a></p>
   </div>
 </section>
 

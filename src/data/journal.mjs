@@ -17,7 +17,7 @@ export const posts = [
 <li><strong>The winter hall.</strong> Look up: a lantern opening in the central vault let in light and let out smoke.</li>
 <li><strong>Tethering rings and troughs.</strong> Still visible in the stone at many sites.</li>
 </ul>
-<p>Our <a href="/caravan-route/">caravan-route map</a> links the hans and the towns between them, with a short story for each stop.</p>`,
+<p>Our <a href="/caravan-route/">caravan route</a> links the hans and the towns between them, with a short story for each stop.</p>`,
   },
   {
     slug: 'spare-mornings',

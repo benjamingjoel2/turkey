@@ -61,7 +61,6 @@ src/data/              Content as data: edit these for most text changes
   journal.mjs          Journal posts
   photos.mjs           Every photo, with credit and location check
   sources.mjs          References behind the facts (shown on /sources/ and per page)
-  map-outline.mjs      Generated map outline (Natural Earth, public domain)
 src/pages/             One module per page or group of pages
 src/assets/            styles.css and the small JS files for each tool
 FACTS-TO-VERIFY.md     Everything that needs checking before launch
@@ -73,7 +72,7 @@ FACTS-TO-VERIFY.md     Everything that needs checking before launch
 | --- | --- |
 | `/` | `src/pages/home.mjs` |
 | `/regions/`, `/regions/<slug>/` | `src/pages/regions.mjs` + `src/data/regions.mjs` |
-| `/caravan-route/` (signature map) | `src/pages/caravan.mjs` + `src/data/caravan.mjs` + `src/assets/caravan.js` |
+| `/caravan-route/` (the fourteen stops, no map) | `src/pages/caravan.mjs` + `src/data/caravan.mjs` |
 | `/balloon-guide/` | `src/pages/balloon.mjs` + `src/assets/balloon.js` |
 | `/lycian-way/` (stage planner) | `src/pages/lycian.mjs` + `src/data/lycian.mjs` + `src/assets/lycian.js` |
 | `/etiquette/` (mosques and Ramadan) | `src/pages/etiquette.mjs` |
