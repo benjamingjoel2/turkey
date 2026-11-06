@@ -33,9 +33,9 @@ export function star(size = 24, className = 'star') {
 
 export const arrow = '<svg class="arrow" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
-// Pill button with an arrow disc.
+// One simple pill button; the arrow is a plain glyph after the label (no separate disc).
 export const button = (href, label, variant = '') =>
-  `<a class="btn ${variant}" href="${href}"><span>${label}</span><span class="btn-disc">${arrow}</span></a>`;
+  `<a class="btn ${variant}" href="${href}"><span>${label}</span><span class="btn-arrow">${arrow}</span></a>`;
 
 // 1100 (not 1200) is the step a ~393px phone at 2.75x needs, so it skips a larger file.
 const WIDTHS = [480, 800, 1100, 1600, 2000, 2600];
@@ -176,7 +176,7 @@ export function layout({ path, title, description, body, scripts = [] }) {
     <div class="header-actions">
       ${langSelect('lang-select-header')}
       ${langCompact()}
-      <a class="btn btn-small btn-header" href="/enquire/"${current('/enquire/')}><span>Enquire</span><span class="btn-disc">${arrow}</span></a>
+      <a class="btn btn-small btn-header" href="/enquire/"${current('/enquire/')}><span>Enquire</span><span class="btn-arrow">${arrow}</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-label">Menu</span><span class="nav-toggle-bars" aria-hidden="true"></span></button>
     </div>
   </div>
@@ -187,17 +187,18 @@ ${pageSources(path)}
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    ${path === '/enquire/' ? '' : html`<div class="footer-cta">
-      <p class="marker marker-light"><span class="mono">(→)</span> Start planning</p>
-      <p class="footer-statement">Tell us what you love. We’ll plan the <em>unhurried</em> way.</p>
-      <div class="actions">${button('/enquire/', 'Start an enquiry', 'btn-light')}<a class="btn-text" href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></div>
-    </div>`}
     <div class="footer-grid">
-      <div>
+      <div class="footer-brand">
+        <a class="footer-name" href="/">${esc(brand.name)}</a>
+        <p class="small">${esc(brand.tagline)}</p>
+        <p><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></p>
+        <address class="small">${esc(contact.address)}</address>
+      </div>
+      <nav aria-label="Explore">
         <p class="mono-label">Explore</p>
         <ul class="plain">${NAV.slice(0, 4).map(([h, l]) => `<li><a href="${h}">${l}</a></li>`)}</ul>
-      </div>
-      <div>
+      </nav>
+      <nav aria-label="Before you go">
         <p class="mono-label">Before you go</p>
         <ul class="plain">
           <li><a href="/balloon-guide/">Balloon guide</a></li>
@@ -205,26 +206,15 @@ ${pageSources(path)}
           <li><a href="/etiquette/">Mosques &amp; Ramadan</a></li>
           <li><a href="/when-to-go/">When to go</a></li>
         </ul>
-      </div>
-      <div>
+      </nav>
+      <nav aria-label="Studio">
         <p class="mono-label">Studio</p>
-        <ul class="plain">${NAV.slice(5).map(([h, l]) => `<li><a href="${h}">${l}</a></li>`)}<li><a href="/sources/">Sources</a></li></ul>
-      </div>
-      <div>
-        <p class="mono-label">Contact</p>
-        <ul class="plain">
-          <li><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></li>
-          <li>${esc(contact.address)}</li>
-          <li class="small">${esc(contact.hours)}</li>
-        </ul>
-      </div>
+        <ul class="plain">${NAV.slice(5).map(([h, l]) => `<li><a href="${h}">${l}</a></li>`)}<li><a href="/sources/">Sources</a></li><li><a href="/enquire/">Enquire</a></li></ul>
+      </nav>
     </div>
-    <p class="footer-wordmark" aria-hidden="true">${star(64, 'star footer-star')}${esc(brand.shortName)}</p>
     <div class="footer-base small">
-      <p>${esc(brand.nameStory)}</p>
-      <p>Visa rules, opening hours, ticket prices and seasons change: please confirm with official sources before you travel.</p>
-      <p class="footer-legal"><a href="/privacy/">Privacy policy</a> · <a href="/booking-terms/">Booking terms</a> · <a href="/cookies/">Cookie policy</a></p>
       <p class="mono">© ${new Date().getFullYear()} ${esc(brand.name)}</p>
+      <p class="footer-legal"><a href="/privacy/">Privacy policy</a> · <a href="/booking-terms/">Booking terms</a> · <a href="/cookies/">Cookie policy</a></p>
     </div>
   </div>
 </footer>

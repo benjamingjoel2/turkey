@@ -5,7 +5,7 @@
   "ogLocales": { "en": "en_GB", "fr": "fr_FR", "de": "de_DE", "es": "es_ES" },
   "cleanUrls": true,
   "assetPrefixes": ["/fonts/"],
-  "scripts": ["main.js", "balloon.js", "caravan.js", "enquiry.js", "lycian.js"],
+  "scripts": ["main.js", "balloon.js", "enquiry.js", "lycian.js"],
   "jsLiteral": "\\s|^[A-Z][a-z]",
   "skip": []
 }

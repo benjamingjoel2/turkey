@@ -138,7 +138,7 @@ ${pageHead({ eyebrow: 'Enquire', title: 'Plan a journey through <em>Türkiye</em
       <div class="field"><label for="f-msg">Anything else? <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="6" placeholder="What you love, what you’d rather avoid, mobility or dietary needs, a special occasion…"></textarea></div>
       <div class="field"><label class="check-item"><input type="checkbox" id="f-consent" name="consent" value="yes" required> I’m happy for ${esc(config.brand.name)} to use these details to reply to my enquiry. <span class="req">(required)</span></label></div>
       <div class="form-errors" data-errors role="alert" tabindex="-1" hidden></div>
-      <p><button class="btn" type="submit"><span>Send enquiry</span><span class="btn-disc">${arrow}</span></button></p>
+      <p><button class="btn" type="submit"><span>Send enquiry</span><span class="btn-arrow">${arrow}</span></button></p>
       <p class="small" data-status role="status"></p>
     </form>
     <aside class="aside-box">
@@ -196,7 +196,7 @@ function notFound() {
     description: 'This page could not be found.',
     body: html`
 ${pageHead({ eyebrow: '404', title: 'This road doesn’t go <em>anywhere</em>', lede: 'The page you were looking for has moved or never existed.' })}
-<section class="section"><div class="wrap prose"><p>Try the <a href="/">home page</a>, the <a href="/regions/">regions of Türkiye</a> or the <a href="/caravan-route/">caravan-route map</a>.</p></div></section>`,
+<section class="section"><div class="wrap prose"><p>Try the <a href="/">home page</a>, the <a href="/regions/">regions of Türkiye</a> or the <a href="/caravan-route/">caravan route</a>.</p></div></section>`,
   };
 }
 
