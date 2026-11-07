@@ -175,9 +175,9 @@ button.btn { font-family: var(--font-body); }
 .hero-scrim { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgb(13 28 44 / .6) 0%, rgb(13 28 44 / .2) 22%, rgb(13 28 44 / .38) 48%, rgb(13 28 44 / .9) 100%); }
 .hero h1, .hero .lede, .hero .eyebrow { text-shadow: 0 1px 24px rgb(13 28 44 / .35); }
 .hero-content { padding-top: 7rem; padding-bottom: 1.5rem; }
-.hero h1 { color: var(--c-white); max-width: 14ch; margin-bottom: 0.35em; text-wrap: balance; }
+.hero h1 { color: var(--c-white); max-width: 14ch; margin-bottom: 0.35em; text-wrap: balance; font-size: clamp(2.75rem, 9vw, 7.5rem); } /* original hero size; other display type keeps the 6rem cap */
 .hero-home .eyebrow { margin-bottom: 2.25rem; }
-.hero-home h1 { font-size: clamp(2.8rem, 6.6vw, 6rem); line-height: 0.95; letter-spacing: -0.035em; }
+.hero-home h1 { font-size: clamp(3.5rem, 15vw, 12rem); line-height: 0.92; letter-spacing: -0.035em; }
 .hero-foot { display: grid; gap: 1.5rem; }
 .hero .lede { color: var(--c-white); margin: 0; }
 @media (min-width: 56em) { .hero-foot { grid-template-columns: minmax(0, 34rem) auto; justify-content: space-between; align-items: end; } }
@@ -200,7 +200,7 @@ button.btn { font-family: var(--font-body); }
 /* ── Page head (text) ──────────────────────────────────────────────────── */
 .page-head { padding: 4rem 0 3rem; border-bottom: 1px solid var(--c-stone-deep); }
 @media (min-width: 48em) { .page-head { padding: 7rem 0 4.5rem; } }
-.page-head h1 { max-width: 16ch; font-size: clamp(2.6rem, 6.4vw, 6rem); text-wrap: balance; }
+.page-head h1 { max-width: 16ch; font-size: clamp(2.75rem, 8vw, 6.5rem); text-wrap: balance; }
 .page-head .lede { margin-bottom: 0; }
 
 /* ── Home: statement + principles ──────────────────────────────────────── */
