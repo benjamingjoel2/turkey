@@ -42,8 +42,8 @@ const WIDTHS = [480, 800, 1100, 1600, 2000, 2600];
 const cdn = (src, w, h) =>
   `${src}&w=${w}${h ? `&h=${h}` : ''}&fit=crop&crop=entropy&auto=format&q=68`;
 
-// Responsive Unsplash image with its location underneath. (The Unsplash licence does not
-// require credit; photographer details stay in src/data/photos.mjs.)
+// Responsive Unsplash image with its location underneath. No credit on or under the photo:
+// photographers are credited on /photo-credits/ (src/pages/credits.mjs).
 // ratio: crop to this width/height ratio (e.g. 16/9); defaults to the original.
 export function img(key, { sizes = '100vw', eager = false, ratio, className = '', credit = true } = {}) {
   const p = photos[key];
@@ -214,7 +214,7 @@ ${pageSources(path)}
     </div>
     <div class="footer-base small">
       <p class="mono">© ${new Date().getFullYear()} ${esc(brand.name)}</p>
-      <p class="footer-legal"><a href="/privacy/">Privacy policy</a> · <a href="/booking-terms/">Booking terms</a> · <a href="/cookies/">Cookie policy</a></p>
+      <p class="footer-legal"><a href="/privacy/">Privacy policy</a> · <a href="/booking-terms/">Booking terms</a> · <a href="/cookies/">Cookie policy</a> · <a href="/photo-credits/">Photo credits</a></p>
     </div>
   </div>
 </footer>

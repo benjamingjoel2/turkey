@@ -42,7 +42,7 @@
   "redirects": [
     {
       "source": "/credits/",
-      "destination": "/about/",
+      "destination": "/photo-credits/",
       "permanent": true
     }
   ]

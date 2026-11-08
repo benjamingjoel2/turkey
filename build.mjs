@@ -13,7 +13,7 @@ import { existsSync } from 'node:fs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const DIST = join(ROOT, 'dist');
-const PAGES = ['home', 'regions', 'caravan', 'balloon', 'lycian', 'etiquette', 'food', 'plan', 'site', 'legal'];
+const PAGES = ['home', 'regions', 'caravan', 'balloon', 'lycian', 'etiquette', 'food', 'plan', 'site', 'legal', 'credits'];
 
 // ── Colour maths for the WCAG check ─────────────────────────────────────────
 const lum = (hex) => {
@@ -76,8 +76,12 @@ async function build() {
   await mkdir(DIST, { recursive: true });
 
   const out = new Map();
-  for (const page of pages) {
+  // `late` pages (photo credits) render last; their body function gets the other pages' HTML.
+  const rendered = [];
+  for (const page of [...pages].sort((a, b) => (a.late ? 1 : 0) - (b.late ? 1 : 0))) {
     const file = page.path.endsWith('.html') ? page.path : join(page.path, 'index.html');
+    if (typeof page.body === 'function') page.body = page.body(rendered);
+    else if (!page.noindex && !page.path.endsWith('.html')) rendered.push({ path: page.path, title: page.title, html: page.body });
     const htmlText = layout(page);
     out.set(page.path, htmlText);
     await mkdir(dirname(join(DIST, file)), { recursive: true });
