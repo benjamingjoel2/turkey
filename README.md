@@ -127,9 +127,10 @@ the next begins.
 ## Photos
 
 All photos are from Unsplash, served from Unsplash's CDN with responsive sizes.
-The owner asked for no per-image credit lines and no credits page (Unsplash
-does not require attribution; `/credits/` now redirects to `/about/`). Keep the
-photographer details in `photos.mjs` all the same. The rule is strict: **use a
+The owner asked for no credit lines on or under the photos (8 Nov 2026); every
+photo is credited on one page, `/photo-credits/` (`src/pages/credits.mjs`, linked
+from the footer; `/credits/` redirects there), built from the photographer
+details in `photos.mjs`, so keep them filled in. The rule is strict: **use a
 photo only where it was taken at the place it illustrates.** Each entry in
 `src/data/photos.mjs` records how that was checked:
 
